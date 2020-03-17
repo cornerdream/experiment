@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .li{
+            margin:10px;
+            color:blue;
+        }
+        .active{
+            color:red;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body style="background-color: white">
+    <button id="lamp">关灯</button>
+    <div id="itemBox" class="li">
+        <ul>
+            <li>1</li>
+            <li id="li2">2</li>
+            <li id="li3">3</li>
+            <li id="li4">4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <section class="tabBox" id="tabBox">
+        <ul class="tab clearfix">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="container">
+            <div class="active">1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </section>
+    <button id="changeBtn">点击切换body的颜色，白-红-蓝-绿</button>
+    <input type="text" id="inpBox">
+    <button id="submit">提交</button>
+    工作年限：<input type="text" id="workYear">
+    <br>
+    工作薪酬：<input type="text" id="workMoney">
+    <br>
+    <button id="submit">提交</button>
+    汽油型号：<select name="" id="modelInp">
+        <option value="95">#95</option>
+        <option value="97">#97</option>
+    </select>
+    汽油单价: <input type="text" id="priceInp">
+    <button id="submit">提交</button>
+</body>
+    <!-- <script>
+        let bodyBox=document.body;
+        let lampBtn=document.getElementById('lamp');
+        
+        lampBtn.onclick=function(){
+            let bodyColor=bodyBox.style.backgroundColor;
+            if(bodyColor=='white'){
+                console.log(0);
+                bodyBox.style.backgroundColor='black';
+                lampBtn.innerText='开灯';
+            }else{
+                console.log(1);
+                bodyBox.style.backgroundColor='white';
+                lampBtn.innerText='关灯';
+            }
+        }
+    </script> -->
+    <!-- <script>
+        //break: 强制结束整个循环（循环体中一旦遇到break，整个循环都结束了，break下面代码不再执行，步长累计也不再执行）
+        //continue:   结束本轮循环，下一轮继续循环体中一旦遇到continue，本轮循环结束continue下面代码不再执行，但是步长累计会执行
+        for(var i=0;i<10;i++){
+            if(i>=2){
+                i+=2;
+                continue;
+            }
+            if(i>=6){
+                i--;
+                break;
+            }
+            i++;
+            console.log(i);//1 
+        }
+        console.log(i);//11
+        //遍历数组中的每一项
+        var arr=[10,20,30,40,50];
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
+        dir(arr);
+        //遍历对象中的每一个属性
+        var obj={
+            name:'',
+            age:10,
+            teacher:'',
+            address:'',
+            10:'',
+            0:''
+        }
+        for(var key in obj){//创建一个变量（存储的是属性）in 对象，当前对象中有多少个属性，就循环多少次
+            console.log(key);
+            console.log(obj[key])
+        }//for in 遍历的时候，是优先按照从小到大的机制遍历数字属性的
+        for(var i=0;i<10;i++){
+            console.log(i);//0
+            break;//遇到break结束整个循环
+        }
+        console.log(i);//0
+        for(var i=0;i<10;i++){
+            continue;
+            console.log(i);//continue下面的代码不再执行，步长执行
+        }
+        console.log(i);//10
+        //==比较的时候，如果左右两边数据类型不一致则先转换为相同的类型，再比较
+        a++和a+=1和a=a+1都是在自身基础上累加1，但是a++浏览器会给其做特殊处理（会把其转换为数字再进行累加）
+        a++,a=Number(a)+1;
+        a+=1,a=a+1;
+        //每一个case都是===进行比较，'10'===10,false
+        !(!'Number(undefined)');
+        //'Number(undefined)',字符串，字符串转换为布尔值取反，布尔只有0、NaN、null、undefined、''是false
+        isNaN(parseInt(new Date()))+Number([1])+typeof undefined;
+        //+是最后计算的，先把每一项的都算出来，最后相加
+        //isNaN(parseInt(new Date())),从最里面开始逐一向外层计算，new Date(),日期对象，parseInt('Fri '),NaN,isNaN(NaN),true
+        //Number([1]),Number('1'),1
+        //typeof undefined,'undefined'
+        //true+1,2
+        //2+'undefined','2undefined'
+        
+    </script> -->
+    
+    <!-- <script>
+        let itemBox=document.getElementById('itemBox');
+        let navList=itemBox.getElementsByTagName('li');
+        //itemBox.className='active';
+        //itemBox.className+=' active';
+        //itemBox.classList.add('active');
+        //获取所有的哥哥元素节点
+        function prevAll(node){
+            let result=[];
+            let prev=node.previousSibling;
+            while(prev!==null){
+                if(prev.nodeType==1){
+                    result.unshift(prev);
+                }
+                prev=prev.previousSibling;
+            }
+            return result;
+        }
+        let li2=document.getElementById("li2");
+        console.log(prevAll(li2));
+        //获取所有的弟弟元素节点
+        function nextAll(node){
+            let result=[];
+            let next=node.nextSibling;
+            while(next!==null){
+                if(next.nodeType==1){
+                    result.push(next);
+                }
+                next=next.nextSibling;
+            }
+            return result;
+        }
+        let li3=document.getElementById("li3");
+        console.log(nextAll(li3));
+        //获取所有的兄弟元素节点，所有的哥哥+弟弟
+        function siblings(node){
+            let result=[];
+            let parent=node.parentNode;
+            let son=parent.childNodes;
+            for(var i=0;i<son.length;i++){
+                if(son[i].nodeType===1){
+                    if(son[i]!==node){
+                        result.push(son[i]);
+                    }
+                }
+            }
+            return result;
+        }
+        let li4=document.getElementById("li4");
+        console.log(siblings(li4));
+        //获取当前索引
+        function index(node){
+            //前面有几个哥哥，索引就是多少
+            return prevAll(node).length;
+        }
+
+    </script> -->
+    <script>
+        var navList=document.querySelectorAll(".tav li");
+        var divList=document.querySelectorAll(".container div");
+        for(var i=0;i<navList.length;i++){
+            navList[i].onclick=function(){
+                var curIndex=index(this);
+                navList[curIndex].className='active';
+                divList[curIndex].className='active';
+                var otherNav=siblings(navList[curIndex]);
+                var otherDiv=siblings(divList[curIndex]);
+                for(var j=0;j<otherNav.length;j++){
+                    otherNav[j].className='';
+                    otherDiv[j].className='';
+                }
+            }
+        }
+    </script>
+    <script>
+        let box=document.getElementById('box');
+        let itemList=box.getElementsByTagName('li');
+        let title=box.getElementsByTagName('h2');
+        //把li实现
+        for(var i=0;i<itemList.length;i++){
+            let itemLi=itemList[i];
+            if(i%2==0){
+                itemLi.style.backgroundColor='red';
+            }else{
+                itemLi.style.backgroundColor='green';
+            }
+        }
+    </script>
+    <script>
+        let body=document.body,
+            changeBtn=document.getElementById('changeBtn');
+        // changeBtn.onclick=function(){
+        //     let bg=body.style.backgroundColor;
+        //     if(bg=='white'){
+        //         body.style.backgroundColor='red';
+        //     }else if(bg==='red'){
+        //         body.style.backgroundColor='blue';
+        //     }else if(bg==='blue'){
+        //         body.style.backgroundColor='green';
+        //     }else{
+        //         body.style.backgroundColor='white';
+        //     }
+        // }
+        let arr=['red','blue','green','white'];
+        let index=-1;
+        changeBtn.onclick=function(){
+            index++;
+            if(index>arr.length-1){
+                index=0;
+            }
+            body.style.backgroundColor=arr[index];
+        }
+    </script>
+    <script>
+        let inpBox=document.getElementById('inpBox');
+        let submit=document.getElementById('submit');
+        submit.onclick=function(){
+            let val=inpBox.value;
+            val=Number(val);
+            if(isNaN(val)||val<1000||val>9999){
+                alert('输入的年份必须合法');
+                return;
+            }
+            if((val%4===0&&val%100!==0)||val%400===0){
+                alert(`${val}年是闰年`);
+            }else{
+                alert(`${val}年是平年`);
+            }
+            if(val%2===0){
+                alert(`${val}是偶数`);
+            }else{
+                alert(`${val}是奇数`);
+            }
+            if(val>=90){
+                alert(`优秀`);
+            }else if(val>=80&&val<90){
+                alert(`中等`);
+            }else if(val>70&&val<80){
+                alert(`及格`);
+            }else{
+                alert(`不及格`);
+            }
+
+        }
+    </script>
+    <script>
+        let workYear=document.getElementById('workYear');
+        let workMoney=document.getElementById('workMoney');
+        let submit=document.getElementById('submit');
+        submit.onclick=function(){
+            let year=workYear.value;
+            let money=workMoney.value;
+            year=Number(year);
+            money=Number(money);
+            //最好把year和money做非有效数字的校验
+            if(isNaN(year)||isNaN(money)){
+                alert('输入有误，请查证');
+                return;
+            }
+            result=0;
+            if(year===0){
+                if(money>=8000){
+                    result=money*1.2;
+
+                }else{
+                    result=money*1;
+                }
+            }else if(year===1){
+                if(money>=10000){
+                    result=money*1.7;
+                }else{
+                    result=money*1.5;
+                }
+            }else{
+                if(money>=12000){
+                    result=money*3.2;
+                }else{
+                    result=money*3;
+                }
+            }
+            alert(`您应该拿到的年终奖是:${result}.toFixed(2)`);
+        }
+    </script>
+    <script>
+        let modelInp=document.getElementById('modelInp');
+        let priceInp=document.getElementById('priceInp');
+        let submit=document.getElementById('submit');
+        submit.onclick=function(){
+            let model=modelInp.value;
+            let price=priceInp.value;
+            model=Number(model);
+            price=Number(price);
+            if(isNaN(model)||isNaN(price)){
+                alert('输入错误');
+                return;
+            }
+            let result=0;
+            if(model===95){
+                if(price>=20){
+                    result=price*5.9;
+                }else{
+                    result=price*6;
+                }
+            }else{
+                if(price>=30){
+                    result=price*6.95;
+                }else{
+                    result=price*7;
+                }
+            }
+        }
+    </script>
+    
+</html>
