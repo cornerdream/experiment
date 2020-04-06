@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container{
+            width: 90%;
+            margin: auto;
+        }
+        .navbar{
+            background-color: aqua;
+            padding: .5rem 1.5rem;
+            display: flex;
+        }
+        .navbar-brand{
+            display: inherit;
+            padding: 10px;
+            align-items: center;
+        }
+        .navbar-nav{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .nav-item{
+            padding: 10px;
+            
+        }
+        .productBox{
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            margin-right: 1%;
+            margin-bottom: 10px;
+            width: 17.2%;
+        }
+        .card:nth-child(5n+5){
+            margin-right: 0;
+        }
+        .img-top{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <nav class="navbar">
+            <a href="javascript:;" class="navbar-brand">排序</a>
+            <ul class="navbar-nav">
+                <li class="nav-item" data-pai="price">价格</li>
+                <li class="nav-item" data-pai="time">时间</li>
+                <li class="nav-item" data-pai="hot">销量</li>
+                
+            </ul>
+        </nav>
+        <ul class="productBox">
+            <!-- <li class="card">
+                <img src="" alt="" class="img-top">
+                <p class="card-text">11</p>
+                <p class="card-text">22</p>
+                <p class="card-text">33</p>
+                <p class="card-text">44</p>
+            </li> -->
+        </ul>
+    </section>
+</body>
+</html>
+<script src="index.js"></script>
